@@ -28,9 +28,9 @@ const PROFILE = {
   title: "",
   tagline: "",
   heroLine: "Data / Business Analyst",
-  bio: "4+ years at Apple across three roles: sales, tech support, and technical writing. I don't analyze data in a silo. I've sat with the customer, diagnosed the problem, and seen how data decisions play out in real life.",
-  bio2: "I traced a 60% spike in escalation tickets to a 33% error rate in the training platform. I've analyzed 3M+ data points to find the exact moment customers stop coming back. I dig until I find something the team can actually fix.",
-  bio3: "Your team has the data but not the clarity. I connect the dots.",
+  bio: "I joined Apple at 18 with less experience than most people in the room. That taught me something early: curiosity matters more than credentials. Over four and a half years, I grew from Sales to Technical Specialist to Technical Writer, working across retail and corporate with incredibly talented people who pushed me to take on challenges before I felt ready.",
+  bio2: "My fascination with data started small. I used Facebook data to boost community engagement. Then I started analyzing traffic patterns for fun, reading Amazon reviews to spot product gaps, and comparing Netflix ratings to understand business decisions. That curiosity turned into a career. Now I do real analytics work, turning complex datasets into insights teams can act on.",
+  bio3: "I value learning, diversity, and inclusion. A diverse team brings diverse perspectives, and that leads to better results. I'm proactive, I embrace ambiguity, and I don't wait until I'm fully ready to jump in.",
   personal: "Outside of work, I like reading, running, hiking, swimming and any water sport I can find. My favourite book is Yellowface by R.F. Kuang. The book is so intense (to me), I spent an entire weekend to finish it. Highly recommended.",
   personal2: "I love good food, especially Vietnamese dishes. I grew up in Vietnam and got to try so many incredible things. I hope I can go back one day to explore and enjoy more delicious cuisine.",
   personal3: "I've also signed up for various run events that I am absolutely not ready for, so it's time to step up and train hard every week.",
@@ -55,6 +55,16 @@ const PROJECTS = [
     description:
       "Analyzed over 3 million public InstaCart data points and uncovered a critical 10% drop in customer retention after the fourth purchase. Formulated data-driven recommendations to improve long-term loyalty and revenue.",
     color: "#4A6741",
+    github: "https://github.com/thulam1234",
+  },
+  {
+    title: "Factors Impacting Student Exam Scores",
+    category: "Data Science",
+    tags: ["R", "Linear Regression", "EDA", "Kaggle"],
+    description:
+      "Built a linear regression model (R-squared 0.72) to identify what drives student exam scores. Found that hours studied, previous scores, motivation, teacher quality, and attendance are the strongest predictors, while sleep hours and school type had no significant impact. Recommended targeted strategies for schools to improve student success.",
+    color: "#5B8A72",
+    github: "https://github.com/thulam1234/Factors_impact_scores_data_science_project",
   },
 ];
 
@@ -63,30 +73,39 @@ const EXPERIENCE = [
     role: "Technical Writer",
     company: "Apple, Sunnyvale",
     period: "2026",
+    step: 3,
+    summary: "Ramped up within a month, managing stakeholders and leading projects. Found a 60% escalation spike, traced it to a training platform error, and built a Tableau dashboard that drove monthly presentations to AppleCare management.",
     metrics: [
-      { number: "20+", label: "Procedures published" },
-      { number: "60%", label: "Escalation spike identified" },
-      { number: "33%", label: "Root cause error rate found" },
+      { number: "20+", label: "Procedures published", context: "Wrote repair docs used by technicians worldwide" },
+      { number: "60%", label: "Escalation spike identified", context: "Built Tableau dashboard for monthly reporting to leadership" },
+      { number: "2", label: "Tools built", context: "Video localization workflow and NPI support" },
+      { number: "30+", label: "Issues resolved", context: "Usability issues across multiple projects via Radar" },
+      { number: "5+", label: "Teams partnered with", context: "Engineering, media, production, PMs, and post-production" },
     ],
   },
   {
     role: "Technical Specialist",
     company: "Apple, San Jose",
     period: "2024 – Present",
+    step: 2,
+    summary: "Used appointment data to cut wait times and presented the express strategy to 100+ people.",
     metrics: [
-      { number: "97%", label: "Diagnostic accuracy" },
-      { number: "14%", label: "Conversion rate driven" },
-      { number: "10%", label: "Wait times reduced" },
+      { number: "97%", label: "Diagnostic accuracy", context: "Reduced unnecessary part replacements" },
+      { number: "14%", label: "Conversion rate", context: "Data-informed product recommendations" },
+      { number: "100+", label: "People presented to", context: "Pitched express appointment strategy to the store team" },
+      { number: "10%", label: "Wait times reduced", context: "Analyzed appointment data to optimize scheduling" },
     ],
   },
   {
     role: "Sales Specialist",
     company: "Apple, San Jose",
     period: "2021 – 2024",
+    step: 1,
+    summary: "Spotted B2B patterns in retail data and turned casual buyers into enterprise leads.",
     metrics: [
-      { number: "50%", label: "AppleCare attachment rate" },
-      { number: "90%+", label: "Customer satisfaction" },
-      { number: "4+", label: "B2B leads per month" },
+      { number: "50%", label: "AppleCare attachment", context: "Identified upsell moments at point of sale" },
+      { number: "90%+", label: "Customer satisfaction", context: "Tailored solutions by analyzing individual needs" },
+      { number: "4+", label: "B2B leads monthly", context: "Recognized business purchasing patterns in retail" },
     ],
   },
 ];
@@ -750,6 +769,47 @@ const globalCSS = `
   }
 
   /* PERSONAL FLOW */
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+    margin-top: 32px;
+  }
+
+  .value-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 24px 20px;
+    border: 1px solid rgba(232, 220, 200, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(74, 103, 65, 0.08);
+  }
+
+  .value-icon {
+    margin-bottom: 4px;
+  }
+
+  .value-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    color: var(--charcoal);
+  }
+
+  .value-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
   .personal-flow {
     max-width: 720px;
     margin: 36px auto 0;
@@ -1005,6 +1065,78 @@ const globalCSS = `
     line-height: 1.7;
   }
 
+  /* CAREER PROGRESSION */
+  .career-progression {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 36px;
+    padding: 24px 20px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid rgba(232, 220, 200, 0.5);
+  }
+
+  .career-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+  }
+
+  .career-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2.5px solid var(--forest);
+    background: var(--card-bg);
+  }
+
+  .career-dot.active {
+    background: var(--forest);
+  }
+
+  .career-dot.next {
+    background: var(--card-bg);
+    border-style: dashed;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(74, 103, 65, 0.3); }
+    50% { box-shadow: 0 0 0 6px rgba(74, 103, 65, 0); }
+  }
+
+  .career-step-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--charcoal);
+    white-space: nowrap;
+  }
+
+  .career-step-year {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .career-line {
+    width: 60px;
+    height: 2px;
+    background: var(--forest);
+    margin: 0 12px;
+    margin-bottom: 36px;
+    flex-shrink: 0;
+  }
+
+  .career-line.dashed {
+    background: none;
+    border-top: 2px dashed var(--forest);
+    opacity: 0.4;
+  }
+
   /* EXPERIENCE CARDS */
   .exp-cards {
     display: flex;
@@ -1045,6 +1177,16 @@ const globalCSS = `
     font-weight: 500;
   }
 
+  .exp-card-summary {
+    font-size: 15px;
+    color: var(--charcoal);
+    font-weight: 450;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(232, 220, 200, 0.4);
+  }
+
   .exp-card-period {
     font-size: 13px;
     font-weight: 600;
@@ -1057,7 +1199,7 @@ const globalCSS = `
 
   .exp-metrics {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 16px;
   }
 
@@ -1082,6 +1224,14 @@ const globalCSS = `
     color: var(--muted);
     font-weight: 500;
     line-height: 1.3;
+  }
+
+  .exp-metric-context {
+    font-size: 11px;
+    color: var(--muted);
+    opacity: 0.7;
+    line-height: 1.4;
+    margin-top: 4px;
   }
 
   /* SKILLS */
@@ -1417,9 +1567,12 @@ const globalCSS = `
     .featured-project { grid-template-columns: 1fr; }
     .exp-metrics { grid-template-columns: 1fr; }
     .exp-card-header { flex-direction: column; gap: 8px; }
+    .career-progression { flex-wrap: wrap; gap: 8px; }
+    .career-line { width: 30px; margin: 0 4px; margin-bottom: 36px; }
     .about-stats { flex-direction: column; gap: 20px; padding: 24px; }
     .about-stat-divider { width: 60px; height: 1px; }
     .personal-row, .personal-row.reverse { flex-direction: column; align-items: center; text-align: center; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .contact-links-inline { grid-template-columns: 1fr; }
     .cert-card { flex-direction: column; text-align: center; }
@@ -1506,7 +1659,7 @@ function Portfolio() {
             </FadeIn>
             <FadeIn delay={0.1}>
               <div className="hero-greeting">
-                <Typewriter text="Hello, I'm Thu Lam but you can call me" speed={40} delay={400} />
+                <Typewriter text="Hello! Welcome to my world. I'm Thu, but you can call me" speed={35} delay={400} />
               </div>
             </FadeIn>
             <FadeIn delay={0.15}>
@@ -1608,6 +1761,86 @@ function Portfolio() {
         </div>
       </section>
 
+      {/* VALUES */}
+      <section className="section" id="values" style={{ background: "#EEF4EB" }}>
+        <div className="section-inner">
+          <FadeIn>
+            <div className="section-label" style={{ textAlign: "center" }}>What Drives Me</div>
+          </FadeIn>
+          <div className="values-grid">
+            <FadeIn delay={0.05}>
+              <div className="value-card">
+                <svg className="value-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="18" cy="14" r="8" stroke="#4A6741" strokeWidth="1.8" fill="none"/>
+                  <path d="M18 10 L18 14 L21 16" stroke="#4A6741" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M10 26 Q18 22 26 26" stroke="#4A6741" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.3"/>
+                  <line x1="18" y1="24" x2="18" y2="30" stroke="#4A6741" strokeWidth="1.5" strokeLinecap="round" opacity="0.3"/>
+                </svg>
+                <span className="value-title">Curiosity</span>
+                <span className="value-desc">I analyze traffic, reviews, and ratings for fun. If it has data, I'm already thinking about it.</span>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="value-card">
+                <svg className="value-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 28 L14 18 L20 22 L28 8" stroke="#4A6741" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                  <path d="M24 8 L28 8 L28 12" stroke="#4A6741" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                </svg>
+                <span className="value-title">Courage</span>
+                <span className="value-desc">Apple at 18. Leading projects in month one. I jump in before I feel ready.</span>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <div className="value-card">
+                <svg className="value-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 18 C8 18 14 8 18 18 C22 28 28 18 28 18" stroke="#4A6741" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                  <circle cx="18" cy="18" r="3" stroke="#4A6741" strokeWidth="1.5" fill="none" opacity="0.4"/>
+                </svg>
+                <span className="value-title">Adaptability</span>
+                <span className="value-desc">Three roles, retail and corporate. I thrive in ambiguity.</span>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="value-card">
+                <svg className="value-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 6 L18 20" stroke="#4A6741" strokeWidth="2" strokeLinecap="round"/>
+                  <path d="M12 14 L18 20 L24 14" stroke="#4A6741" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                  <path d="M8 26 C8 26 12 30 18 30 C24 30 28 26 28 26" stroke="#4A6741" strokeWidth="1.8" strokeLinecap="round" fill="none" opacity="0.4"/>
+                </svg>
+                <span className="value-title">Growth</span>
+                <span className="value-desc">Started with less experience than everyone around me. Turned that into fuel.</span>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.25}>
+              <div className="value-card">
+                <svg className="value-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="14" r="5" stroke="#4A6741" strokeWidth="1.5" fill="none"/>
+                  <circle cx="24" cy="14" r="5" stroke="#4A6741" strokeWidth="1.5" fill="none"/>
+                  <circle cx="18" cy="24" r="5" stroke="#4A6741" strokeWidth="1.5" fill="none"/>
+                  <line x1="15" y1="18" x2="16" y2="20" stroke="#4A6741" strokeWidth="1.2" opacity="0.3"/>
+                  <line x1="21" y1="18" x2="20" y2="20" stroke="#4A6741" strokeWidth="1.2" opacity="0.3"/>
+                </svg>
+                <span className="value-title">Community</span>
+                <span className="value-desc">Diversity and inclusion matter. I show up for people, not just projects.</span>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <div className="value-card">
+                <svg className="value-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="6" y="14" width="10" height="14" rx="2" stroke="#4A6741" strokeWidth="1.5" fill="none"/>
+                  <rect x="20" y="8" width="10" height="20" rx="2" stroke="#4A6741" strokeWidth="1.5" fill="none"/>
+                  <path d="M11 18 L11 24" stroke="#4A6741" strokeWidth="1.5" strokeLinecap="round" opacity="0.3"/>
+                  <path d="M25 12 L25 24" stroke="#4A6741" strokeWidth="1.5" strokeLinecap="round" opacity="0.3"/>
+                  <path d="M16 21 L20 21" stroke="#4A6741" strokeWidth="1.5" strokeLinecap="round" opacity="0.4"/>
+                </svg>
+                <span className="value-title">Solutions</span>
+                <span className="value-desc">I don't just find problems. I build dashboards, tools, and strategies to fix them.</span>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
       {/* PERSONAL */}
       <section className="section" id="personal" style={{ background: "#EEF4EB" }}>
         <div className="section-inner">
@@ -1674,6 +1907,8 @@ function Portfolio() {
             <div className="section-label">Selected Work</div>
             <h2 className="section-title">Projects</h2>
           </FadeIn>
+
+          {/* InstaCart */}
           <FadeIn delay={0.1}>
             <div className="featured-project">
               <div className="featured-project-left">
@@ -1685,10 +1920,8 @@ function Portfolio() {
                   ))}
                 </div>
                 <p className="featured-project-desc">{PROJECTS[0].description}</p>
-                <a className="project-github-link" href={`https://${PROFILE.github}`} target="_blank" rel="noopener noreferrer">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                  </svg>
+                <a className="project-github-link" href={PROJECTS[0].github} target="_blank" rel="noopener noreferrer">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                   View on GitHub
                 </a>
               </div>
@@ -1705,14 +1938,7 @@ function Portfolio() {
                     <div className="retention-bar-row" key={d.n}>
                       <span className="retention-bar-label">{d.n}</span>
                       <div className="retention-bar-track">
-                        <div
-                          className="retention-bar-fill"
-                          style={{
-                            width: `${d.pct}%`,
-                            background: d.pct <= 64 ? "#c0392b" : "#4A6741",
-                            opacity: d.pct <= 64 ? 0.75 : 0.85,
-                          }}
-                        />
+                        <div className="retention-bar-fill" style={{ width: `${d.pct}%`, background: d.pct <= 64 ? "#c0392b" : "#4A6741", opacity: d.pct <= 64 ? 0.75 : 0.85 }} />
                       </div>
                       <span className="retention-bar-pct">{d.pct}%</span>
                     </div>
@@ -1722,7 +1948,48 @@ function Portfolio() {
               </div>
             </div>
           </FadeIn>
+
+          {/* Student Scores */}
           <FadeIn delay={0.2}>
+            <div className="featured-project" style={{ marginTop: 24 }}>
+              <div className="featured-project-left">
+                <div className="project-category">{PROJECTS[1].category}</div>
+                <h3 className="featured-project-title">{PROJECTS[1].title}</h3>
+                <div className="project-tags">
+                  {PROJECTS[1].tags.map((t) => (
+                    <span className="project-tag" key={t}>{t}</span>
+                  ))}
+                </div>
+                <p className="featured-project-desc">{PROJECTS[1].description}</p>
+                <a className="project-github-link" href={PROJECTS[1].github} target="_blank" rel="noopener noreferrer">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+              <div className="featured-project-chart">
+                <div className="retention-chart">
+                  <div className="retention-label">Top predictors of exam scores</div>
+                  {[
+                    { n: "Study hrs", pct: 95 },
+                    { n: "Prev score", pct: 88 },
+                    { n: "Motivation", pct: 78 },
+                    { n: "Teacher", pct: 72 },
+                    { n: "Attendance", pct: 65 },
+                  ].map((d) => (
+                    <div className="retention-bar-row" key={d.n}>
+                      <span className="retention-bar-label" style={{ width: 64 }}>{d.n}</span>
+                      <div className="retention-bar-track">
+                        <div className="retention-bar-fill" style={{ width: `${d.pct}%`, background: "#4A6741", opacity: 0.3 + (d.pct / 100) * 0.6 }} />
+                      </div>
+                    </div>
+                  ))}
+                  <div className="retention-drop-note" style={{ background: "rgba(74,103,65,0.08)", color: "#4A6741" }}>R-squared: 0.72 model accuracy</div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.3}>
             <div className="coming-soon-card">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="16" r="12" stroke="#4A6741" strokeWidth="1.5" strokeDasharray="4 3" fill="none" opacity="0.4"/>
@@ -1742,9 +2009,39 @@ function Portfolio() {
             <div className="section-label">Career Path</div>
             <h2 className="section-title">Experience</h2>
           </FadeIn>
+
+          {/* Career progression */}
+          <FadeIn delay={0.1}>
+            <div className="career-progression">
+              <div className="career-step">
+                <div className="career-dot active" />
+                <span className="career-step-label">Sales</span>
+                <span className="career-step-year">2021</span>
+              </div>
+              <div className="career-line" />
+              <div className="career-step">
+                <div className="career-dot active" />
+                <span className="career-step-label">Tech Specialist</span>
+                <span className="career-step-year">2024</span>
+              </div>
+              <div className="career-line" />
+              <div className="career-step">
+                <div className="career-dot active" />
+                <span className="career-step-label">Tech Writer</span>
+                <span className="career-step-year">2026</span>
+              </div>
+              <div className="career-line dashed" />
+              <div className="career-step">
+                <div className="career-dot next" />
+                <span className="career-step-label">Data Analyst</span>
+                <span className="career-step-year">Next</span>
+              </div>
+            </div>
+          </FadeIn>
+
           <div className="exp-cards">
             {EXPERIENCE.map((exp, i) => (
-              <FadeIn key={exp.company} delay={i * 0.12}>
+              <FadeIn key={exp.role} delay={0.15 + i * 0.12}>
                 <div className="exp-card">
                   <div className="exp-card-header">
                     <div>
@@ -1753,11 +2050,13 @@ function Portfolio() {
                     </div>
                     <div className="exp-card-period">{exp.period}</div>
                   </div>
+                  <p className="exp-card-summary">{exp.summary}</p>
                   <div className="exp-metrics">
                     {exp.metrics.map((m) => (
                       <div className="exp-metric" key={m.label}>
                         <span className="exp-metric-number">{m.number}</span>
                         <span className="exp-metric-label">{m.label}</span>
+                        <span className="exp-metric-context">{m.context}</span>
                       </div>
                     ))}
                   </div>
@@ -1896,27 +2195,27 @@ function Portfolio() {
                 Whether you want to talk data, explore a collaboration, or just say hi, I'd love to hear from you.
               </p>
               <div className="contact-links-inline">
-                <div className="contact-link">
+                <a className="contact-link" href={`mailto:${PROFILE.email}`}>
                   <div className="contact-icon" style={{ background: "rgba(74,103,65,0.1)", color: "#4A6741" }}>✉</div>
                   <div>
                     <div className="contact-link-label">Email</div>
                     <div className="contact-link-value">{PROFILE.email}</div>
                   </div>
-                </div>
-                <div className="contact-link">
+                </a>
+                <a className="contact-link" href={`https://${PROFILE.linkedin}`} target="_blank" rel="noopener noreferrer">
                   <div className="contact-icon" style={{ background: "rgba(74,103,65,0.1)", color: "#4A6741" }}>in</div>
                   <div>
                     <div className="contact-link-label">LinkedIn</div>
                     <div className="contact-link-value">{PROFILE.linkedin}</div>
                   </div>
-                </div>
-                <div className="contact-link">
+                </a>
+                <a className="contact-link" href={`https://${PROFILE.github}`} target="_blank" rel="noopener noreferrer">
                   <div className="contact-icon" style={{ background: "rgba(46,42,38,0.08)", color: "#2E2A26" }}>◆</div>
                   <div>
                     <div className="contact-link-label">GitHub</div>
                     <div className="contact-link-value">{PROFILE.github}</div>
                   </div>
-                </div>
+                </a>
               </div>
             </FadeIn>
           </div>
